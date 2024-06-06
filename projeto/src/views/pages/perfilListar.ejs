@@ -1,0 +1,64 @@
+        <div class="mb-4">
+            <h2><%- tituloCabecalho %></h2>
+        </div>
+
+        <div class="col-md-12 mb-1" id="divCardsPrincipal">
+            <div class="card card-ocorrencia">
+                <div class="card-header card-header-ocorrencia d-flex justify-content-between align-items-center" >
+                    <h5 class="card-title mb-0">Perfis Cadastradas</h5>
+                    <a class="card-link ml-auto" data-toggle="collapse" href="#divCardOcorrencia"><i class="fa-solid fa-chevron-up fa-lg" style="color:white"></i></a>
+                </div>
+                <div id="divCardOcorrencia" class="collapse show" data-parent="#divCardsPrincipal">
+                    <div class="card-body">
+
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">Perfil</th>
+                                <th scope="col">Descrição</th>
+                                <th scope="col">Pessoas</th>
+                                <th scope="col">Ações</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                                <% 
+                                    perfilList.forEach(item => { 
+
+                                        let blocoHtmlResponsavel = "";
+
+                                        let pessoasContidaPerfil_List = 
+                                            pessoaList_Configurado.filter( x => x.idPerfil === item.idPerfil);
+                                        
+                                        pessoasContidaPerfil_List.forEach(z => { 
+                                            blocoHtmlResponsavel += '&nbsp;&nbsp;&nbsp;<i class=\"fa-solid fa-user fa-md\"></i>&nbsp;&nbsp;&nbsp;' + z.nmPessoa + '<br>';
+                                        });
+                                %>
+                                        <tr>
+                                            <td><%= item.nmPerfil %></td>
+                                            <td><%= item.dePerfil %></td>
+                                            <td><div class="bordaDireitaTableLinha"><%- blocoHtmlResponsavel %></div></td>
+                                            <td>
+                                                <a class="nav-link" href="#" onclick="carregarConteudoMain('/api/perfil/incluirInit/<%= item.idPerfil %>');">
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                <%
+                                   });
+
+                                %>  
+                            
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 mb-4 p-2 flex" style="padding-left: 480px; padding-right: 80px; ">
+            <nav class="navbar bg-light" >
+                <button type="button" id="btnPerfilIncluirInit" onclick="carregarConteudoMain('/api/perfil/incluirInit/0');" class="btn card-header-ocorrencia hover:bg-fuchsia-700"><i class="fa-solid fa-plus"></i> incluir</button>
+            </nav>
+        </div>
+        

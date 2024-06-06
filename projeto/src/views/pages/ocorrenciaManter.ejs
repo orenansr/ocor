@@ -1,0 +1,79 @@
+
+        <div class="mb-4">
+            <h2><%- tituloCabecalho %></h2>
+        </div>
+        
+        <!-- Minhas Ocorrências -->
+        <div class="col-md-12 mb-4">
+            <div class="card card-ocorrencia">
+                <div class="card-header card-header-ocorrencia">
+                    <h5 class="card-title "><%= subCabecalho %></h5>
+                </div>
+                <div class="card-body">
+
+                   
+                    <form class="g-3 needs-validation" action="<%- rota %>" method="post" id="formManterOcorrencia" novalidate>
+                        <input type="hidden" id="hdnidCurso_alunologado" value="<%- session.usuario.idCurso %>"/>
+                        <input type="hidden" id="hdnResponsavelFinanceiroList" name="hdnResponsavelFinanceiroList"/>
+                        
+                        <!-- Curso -->
+                        <div class="mb-3 row">
+                            <div class="col-md-2">
+                                <label for="ddlCurso" class="form-label">Curso</label>
+                            </div>
+                            <div class="col-md-10">
+                                <select id="ddlCurso" name="ddlCurso" class="form-select form-select-lg" aria-label="Curso"></select>
+                            </div>
+                        </div>
+
+
+                        <div class="mb-3 row">
+                            <div class="col-md-2">
+                                <label for="ddlOcorrenciaTipo" class="form-label">Tipo de Ocorrência</label>
+                            </div>
+                            <div class="col-md-10">
+                                <select id="ddlOcorrenciaTipo" stype="border-color: red;" name="ddlOcorrenciaTipo" class="form-select form-select-lg" aria-label="Tipo Ocorrência" required></select>
+                                <div id="ddlOcorrenciaTipo_alert" class="errorMensageAlert text-danger"></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <div class="col-md-2">
+                                <label for="ddlOcorrenciaSubTipo" class="form-label">Sub Tipo Ocorrência</label>
+                            </div>
+                            <div class="col-md-10 warning">
+                                <select id="ddlOcorrenciaSubTipo" name="ddlOcorrenciaSubTipo" class="form-select form-select-lg" aria-label="Sub Tipo Ocorrência" required>
+                                    <option value="0">Selecione o Tipo de Ocorrência</option>
+                                </select>
+                                <div id="ddlOcorrenciaSubTipo_alert" class="errorMensageAlert text-danger"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Reponsável -->
+                        <div class="mb-3 row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend><h5>Responsável(eis) pela Ocorrência</h5></legend>
+                                    <div class="col-sm-12">
+                                        <ul class="list-group list-group-flush" id="ulResponsavelOcorrencia"></ul>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="deOcorrencia" class="form-label">Detalhamento</label>
+                            <textarea class="form-control" id="deOcorrencia" name="deOcorrencia" rows="3" required><%= deOcorrencia %></textarea>
+                            <div id="deOcorrencia_alert" class="errorMensageAlert text-danger"></div>
+                          </div>
+
+                        <button type="submit" class="btn card-header-ocorrencia hover:bg-fuchsia-700">Salvar</button> 
+                        <button type="button" id="btnOcorrenciaCancelar" onclick="carregarConteudoMain('/api/ocorrencia/listar')" class="btn card-header-ocorrencia hover:bg-fuchsia-700">Cancelar</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    
+   
+    <script src="/javascript/ocorrencia_javascript.js"></script>

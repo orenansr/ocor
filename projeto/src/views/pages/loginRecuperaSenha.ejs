@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+  
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/header.css">
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+</head>
+
+<body>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 bg-light p-5  d-flex justify-content-center align-items-center " style="height: 100vh">
+                
+                <form id="loginForm" action="loginRecuperaSenha" method="POST" class="m-5">
+                    <img src="../../img/logo-ceub-versao-condensada.webp">
+                    <h1>Reperar Senha</h1>
+                    <br>
+                    <strong>
+                        <p>Informe pelo menos um dos campos abaixo: usuario, CPF ou e-mail</p>
+                        <p>A senha será enviada para o seu e-mail</p>
+                        <!-- <p>via Telegram no número celular cadastrado</p> -->
+                    </strong>
+                    <div class="form-group">
+                        <label for="coAcesso">Usuário:</label>
+                        <input type="text" name="coAcesso" id="coAcesso" class="form-control 80px" placeholder="Insira seu código de acesso">
+                    </div>
+                    <div class="form-group">
+                        <label for="nuCPF">CPF:</label>
+                        <input type="text" name="nuCPF" id="nuCPF" class="form-control" placeholder="Digite seu CPF">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edMail">E-Mail:</label>
+                        <input type="text" name="edMail" id="edMail" class="form-control" placeholder="Digite seu e-mail">
+                    </div>
+
+                    <% if (typeof mensagem !== 'undefined') { %>
+                        <div class="p-2 flex items-center" style="color: red;"> <%= mensagem %> </div>
+                    <% } %>
+
+                    <button type="submit" class="btn card-header-ocorrencia hover:bg-fuchsia-700">Entrar</button>
+            
+                </form>
+            
+            </div>
+            <div class=" col-md-6 p-5 d-flex text-center text-white justify-content-center align-items-center bg-fuchsia-700" style="height: 100vh; width: 100vw;">
+                <h1><strong>Sistema destinado as ocorrências do CEUB</strong></h1>    
+            </div>
+
+            
+        </div>
+    </div>
+
+   
+</body>
+</html>
